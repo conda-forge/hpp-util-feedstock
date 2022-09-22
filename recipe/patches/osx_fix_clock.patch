@@ -1,0 +1,34 @@
+From 0c8559ca57344a0d5d48ece11b29bdd9617e1e64 Mon Sep 17 00:00:00 2001
+From: Yann Dubois De Mont-Marin <ydemontm@julia.paris.inria.fr>
+Date: Thu, 22 Sep 2022 11:05:55 +0200
+Subject: [PATCH] FIX: force system_clock
+
+---
+ include/hpp/util/timer.hh | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git include/hpp/util/timer.hh include/hpp/util/timer.hh
+index 0d23e72..4de21ea 100644
+--- include/hpp/util/timer.hh
++++ include/hpp/util/timer.hh
+@@ -37,7 +37,7 @@ namespace hpp {
+ namespace debug {
+ class HPP_UTIL_DLLAPI Timer {
+  public:
+-  typedef std::chrono::high_resolution_clock clock_type;
++  typedef std::chrono::system_clock clock_type;
+   typedef clock_type::time_point time_point;
+   typedef std::chrono::duration<double> duration_type;
+ 
+@@ -101,7 +101,7 @@ class HPP_UTIL_DLLAPI TimeCounter {
+     TimeCounter& tc;
+   };
+ 
+-  typedef std::chrono::high_resolution_clock clock_type;
++  typedef std::chrono::system_clock clock_type;
+   typedef clock_type::time_point time_point;
+   typedef std::chrono::duration<double> duration_type;
+ 
+-- 
+2.25.1
+

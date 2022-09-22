@@ -1,5 +1,5 @@
 {% set name = "hpp-util" %}
-{% set version = "4.10.1" %}
+{% set version = "4.13.0" %}
 
 package:
   name: {{ name }}
@@ -8,9 +8,11 @@ package:
 source:
   url: https://github.com/humanoid-path-planner/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz
   sha256: b865214ee7f14ce2f9175f29779ab8a91eb76239ded13a7182571508e0523772
+  patches:
+    - patches/osx_fix_clock.patch  # [osx]
 
 build:
-  number: 2
+  number: 0
   skip: true  # [win]
   run_exports:
     - {{ pin_subpackage(name|lower, max_pin='x.x') }}
@@ -52,3 +54,4 @@ about:
 extra:
   recipe-maintainers:
     - ymontmarin
+    - jcarpent

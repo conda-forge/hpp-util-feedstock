@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/humanoid-path-planner/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: b865214ee7f14ce2f9175f29779ab8a91eb76239ded13a7182571508e0523772
+  sha256: 7e5db3b71a7db749e6070748b8548d735378fbdea307cb99a3c5dc9c9eb64235
   patches:
     - patches/osx_fix_clock.patch  # [osx]
 
@@ -42,7 +42,7 @@ about:
   home: https://github.com/humanoid-path-planner/{{ name }}
   license: LGPL-3.0-or-later
   license_file: COPYING
-  summary: '{{ name }} subpackage of Humanoid Path Planner suite'
+  summary: {{ name }} subpackage of Humanoid Path Planner suite
   description: |
     HPP (Humanoid Path Planner) is a collection of software packages implementing
     path planning functionalities for a humanoid robot. The core functionalities are well

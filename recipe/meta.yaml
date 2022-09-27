@@ -25,10 +25,10 @@ requirements:
     - pkg-config
     - doxygen
   host:
-    - boost-cpp
+    - boost-cpp  1.74.0
     - tinyxml
   run:
-    - boost-cpp
+    - boost-cpp  1.74.0
     - tinyxml
 
 test:

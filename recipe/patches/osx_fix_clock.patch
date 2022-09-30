@@ -1,14 +1,16 @@
-From 0c8559ca57344a0d5d48ece11b29bdd9617e1e64 Mon Sep 17 00:00:00 2001
+From a47b9c05d2f94f41f6722945cfd4f739281aec19 Mon Sep 17 00:00:00 2001
 From: Yann Dubois De Mont-Marin <ydemontm@julia.paris.inria.fr>
-Date: Thu, 22 Sep 2022 11:05:55 +0200
-Subject: [PATCH] FIX: force system_clock
+Date: Fri, 30 Sep 2022 17:52:57 +0200
+Subject: [PATCH] Use explicit steaadyclock for intervall and system clock to
+ print
 
 ---
  include/hpp/util/timer.hh | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ src/timer.cc              | 6 +++++-
+ 2 files changed, 7 insertions(+), 3 deletions(-)
 
 diff --git include/hpp/util/timer.hh include/hpp/util/timer.hh
-index 0d23e72..4de21ea 100644
+index 0d23e72..b655534 100644
 --- include/hpp/util/timer.hh
 +++ include/hpp/util/timer.hh
 @@ -37,7 +37,7 @@ namespace hpp {
@@ -16,7 +18,7 @@ index 0d23e72..4de21ea 100644
  class HPP_UTIL_DLLAPI Timer {
   public:
 -  typedef std::chrono::high_resolution_clock clock_type;
-+  typedef std::chrono::system_clock clock_type;
++  typedef std::chrono::steady_clock clock_type;
    typedef clock_type::time_point time_point;
    typedef std::chrono::duration<double> duration_type;
  
@@ -29,6 +31,23 @@ index 0d23e72..4de21ea 100644
    typedef clock_type::time_point time_point;
    typedef std::chrono::duration<double> duration_type;
  
+diff --git src/timer.cc src/timer.cc
+index e7d215f..3756fa5 100644
+--- src/timer.cc
++++ src/timer.cc
+@@ -60,7 +60,11 @@ const Timer::time_point& Timer::getStop() const { return end_; }
+ double Timer::duration() const { return duration_type(end_ - start_).count(); }
+ 
+ std::ostream& Timer::print(std::ostream& o) const {
+-  auto time = clock_type::to_time_t(start_);
++  auto time = system_clock::to_time_t(
++      system_clock::now()
++      + duration_cast<system_clock::duration>(start_ - clock_type::now())
++    );
++
+   return o << "timer started at "
+            << std::put_time(std::localtime(&time), "%F %T")
+            << " and elapsed time "
 -- 
 2.25.1
 

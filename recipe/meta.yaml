@@ -12,7 +12,7 @@ source:
     - patches/osx_fix_clock.patch  # [osx]
 
 build:
-  number: 1
+  number: 2
   skip: true  # [win]
   run_exports:
     - {{ pin_subpackage(name|lower, max_pin='x.x') }}
@@ -25,10 +25,10 @@ requirements:
     - pkg-config
     - doxygen
   host:
-    - boost-cpp  1.74.0
+    - boost-cpp
     - tinyxml
   run:
-    - boost-cpp  1.74.0
+    - boost-cpp
     - tinyxml
 
 test:

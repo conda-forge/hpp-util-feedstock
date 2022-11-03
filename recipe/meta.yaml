@@ -1,5 +1,5 @@
 {% set name = "hpp-util" %}
-{% set version = "4.13.0" %}
+{% set version = "4.14.0" %}
 
 package:
   name: {{ name }}
@@ -7,12 +7,10 @@ package:
 
 source:
   url: https://github.com/humanoid-path-planner/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 7e5db3b71a7db749e6070748b8548d735378fbdea307cb99a3c5dc9c9eb64235
-  patches:
-    - patches/osx_fix_clock.patch  # [osx]
+  sha256: ed40257aa747603c5cb2eee30f002b54481e344e2da4c64bb69d988043c817a5
 
 build:
-  number: 2
+  number: 0
   skip: true  # [win]
   run_exports:
     - {{ pin_subpackage(name|lower, max_pin='x.x') }}

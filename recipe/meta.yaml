@@ -8,8 +8,6 @@ package:
 source:
   url: https://github.com/humanoid-path-planner/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz
   sha256: ed40257aa747603c5cb2eee30f002b54481e344e2da4c64bb69d988043c817a5
-  patches:
-    - patches/osx_fix_clock.patch  # [osx]
 
 build:
   number: 0

@@ -1,5 +1,5 @@
 {% set name = "hpp-util" %}
-{% set version = "4.14.0" %}
+{% set version = "4.15.1" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/humanoid-path-planner/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: ed40257aa747603c5cb2eee30f002b54481e344e2da4c64bb69d988043c817a5
+  sha256: 6de7ce83ad3552aecb1a526a9dda983d2988663c324e7fde7882db17e480c199
 
 build:
   number: 0

@@ -24,9 +24,9 @@ requirements:
     - doxygen
   host:
     - libboost-devel
-    - tinyxml
+    - tinyxml2
   run:
-    - tinyxml
+    - tinyxml2
 
 test:
   requires:

@@ -18,6 +18,8 @@ libboost_devel:
 - '1.82'
 target_platform:
 - linux-64
+tinyxml2:
+- '10'
 zip_keys:
 - - c_stdlib_version
   - cdt_name

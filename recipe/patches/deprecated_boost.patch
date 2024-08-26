@@ -1,0 +1,41 @@
+From 4431ff3573f615ef4a7e0b589eb72074f70b227f Mon Sep 17 00:00:00 2001
+From: Guilhem Saurel <guilhem.saurel@laas.fr>
+Date: Tue, 30 Jul 2024 12:04:10 +0200
+Subject: [PATCH] remove deprecated stuff
+
+---
+ src/debug.cc              | 5 +----
+ src/factories/sequence.cc | 2 +-
+ 2 files changed, 2 insertions(+), 5 deletions(-)
+
+diff --git src/debug.cc src/debug.cc
+index 25e73a0..672db7f 100644
+--- src/debug.cc
++++ src/debug.cc
+@@ -67,10 +67,7 @@ HPP_UTIL_LOCAL void makeDirectory(const std::string& filename) {
+   using namespace boost::filesystem;
+   path pathname(filename);
+
+-  // FIXME: Boost 1.34.1 does not support the non-obsolete
+-  // equivalent of branch_path, parent_path, so bear with
+-  // it for now.
+-  std::string dirname = pathname.branch_path().string();
++  std::string dirname = pathname.parent_path().string();
+
+   boost::filesystem::create_directories(dirname);
+ }
+diff --git src/factories/sequence.cc src/factories/sequence.cc
+index db8b402..9f7ee22 100644
+--- src/factories/sequence.cc
++++ src/factories/sequence.cc
+@@ -45,7 +45,7 @@ namespace {
+ #define TIXML_SSCANF sscanf
+ #endif
+
+-struct StringIsEmpty : public std::unary_function<std::string, bool> {
++struct StringIsEmpty {
+   bool operator()(std::string s) const { return s.empty(); }
+ };
+
+--
+2.25.1

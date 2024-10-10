@@ -8,8 +8,6 @@ package:
 source:
   url: https://github.com/humanoid-path-planner/{{ name }}/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz
   sha256: 1759ea3b01a45bb97e1e7e1185136d4fc59e5fade1e910f8966b4a36cabb3fbc
-  patches:
-    - patches/deprecated_boost.patch
 
 build:
   number: 0

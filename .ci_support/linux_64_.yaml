@@ -19,4 +19,4 @@ libboost_devel:
 target_platform:
 - linux-64
 tinyxml2:
-- '10'
+- '11.0'
